@@ -2,10 +2,13 @@ package no.nith.android.trafikanten.db;
 
 public class DBManager {
 	
-	private void open() {
+	public void open() {
 	}
 	
-	private void close() {
+	public void close() {
 	}
 	
+	public void query() {
+		
+	}
 }

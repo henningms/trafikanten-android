@@ -6,5 +6,5 @@ import no.nith.android.trafikanten.model.Station;
 
 public interface StationHandler
 {
-	public void onParsed(ArrayList<Station> stations);
+	public void onParsed(ArrayList<Station> arrayList);
 }
