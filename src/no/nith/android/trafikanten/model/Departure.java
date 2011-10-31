@@ -9,6 +9,10 @@ public class Departure
 	private Date expectedDepartureTime;
 	private String vehicleMode;
 	
+	private enum Vehicle {
+		Bus, Boat
+	};
+	
 	public Departure()
 	{
 		this("","",null);
