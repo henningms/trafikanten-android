@@ -14,7 +14,7 @@ public class TestActivity extends BaseActivity {
 
 	@Override
 	public void view() {
-		
+		setLayout("test");
 	}
 
 }
