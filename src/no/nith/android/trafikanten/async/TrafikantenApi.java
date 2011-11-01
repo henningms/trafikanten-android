@@ -33,7 +33,7 @@ public class TrafikantenApi
 	
 	/**
 	 * 
-	 * @param search
+	 * @param search Search string
 	 * @param handler
 	 */
 	public static void findStationsAsync(String search, final StationHandler handler)
@@ -64,7 +64,7 @@ public class TrafikantenApi
 	
 	/**
 	 * 
-	 * @param stationId
+	 * @param stationId ID of station to retrieve departures
 	 * @param handler
 	 */
 	public static void getDeparturesAsync(long stationId, final DepartureHandler handler)
@@ -92,6 +92,12 @@ public class TrafikantenApi
 		});
 	}
 	
+	/**
+	 * 
+	 * @param latitude GPS Latitude
+	 * @param longitude GPS Longitude
+	 * @param handler 
+	 */
 	public static void getClosestStopsByCoordinates(double latitude, double longitude, final ClosestStopsHandler handler)
 	{
 		if (httpClient == null) return;
