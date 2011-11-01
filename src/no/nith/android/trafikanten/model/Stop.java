@@ -3,18 +3,18 @@ package no.nith.android.trafikanten.model;
 public class Stop extends Station
 {
 	private int walkingDistance;
-	private long x, y;
+	private double latitude, longitude;
 	
 	public Stop()
 	{
 		this(0, null, null, 0,0,0);
 	}
 	
-	public Stop(long id, String name, String zone, long x, long y, int walkingDistance)
+	public Stop(long id, String name, String zone, double latitude, double longitude, int walkingDistance)
 	{
 		super(id, name, zone);
-		setX(x);
-		setY(y);
+		setLatitude(latitude);
+		setLongitude(longitude);
 		setWalkingDistance(walkingDistance);
 	}
 	
@@ -27,24 +27,21 @@ public class Stop extends Station
 	{
 		this.walkingDistance = walkingDistance;
 	}
-	
-	public long getX() 
-	{
-		return x;
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 	
-	public void setX(long x)
-	{
-		this.x = x;
-	}
-	
-	public long getY() 
-	{
-		return y;
-	}
-	
-	public void setY(long y) 
-	{
-		this.y = y;
-	}
 }

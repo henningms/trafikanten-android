@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import no.mesan.thomasp.location.util.*;
 import no.nith.android.trafikanten.model.*;
 
 public class JsonParser
@@ -80,9 +81,16 @@ public class JsonParser
 			{
 				JSONObject obj = toParse.optJSONObject(i);
 				
+				long x = obj.getLong("X");
+				long y = obj.getLong("Y");
+				
+				LatLng latLng = new UTMRef(x,y).toLatLng();
+				double latitude = latLng.getLat();
+				double longitude = latLng.getLng();
+				
 				Stop tmpStop = new Stop(
 						obj.getLong("ID"), obj.getString("Name"), obj.getString("Zone"),
-						obj.getLong("X"), obj.getLong("Y"), obj.getInt("WalkingDistance"));
+						latitude, longitude, obj.getInt("WalkingDistance"));
 				
 				stopList.add(tmpStop);
 				

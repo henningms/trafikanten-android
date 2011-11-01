@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import no.mesan.thomasp.location.util.*;
 import no.nith.android.trafikanten.json.JsonParser;
 import no.nith.android.trafikanten.model.Departure;
 import no.nith.android.trafikanten.model.Station;
@@ -26,7 +27,7 @@ public class TrafikantenApi
 	
 	private static final String STATION_PATH = "/Place/FindMatches/%s";
 	private static final String DEPARTURE_PATH = "/RealTime/GetRealTimeData/%d";
-	private static final String CLOSEST_STOPS_PATH = "/Places/GetClosestStopsByCoordinates/%s";
+	private static final String CLOSEST_STOPS_PATH = "/Places/GetClosestStopsByCoordinates/?coordinates=(X=%d,Y=%d)&proposals=7";
 	
 	private static AsyncHttpClient httpClient = new AsyncHttpClient();
 	
@@ -86,7 +87,34 @@ public class TrafikantenApi
 			public void onFailure(Throwable e)
 			{
 				Log.e("getDepartures", "Error retrieving JSON data");
-				//
+				handler.onParsed(null);
+			}
+		});
+	}
+	
+	public static void getClosestStopsByCoordinates(double latitude, double longitude, final ClosestStopsHandler handler)
+	{
+		if (httpClient == null) return;
+		if (latitude == 0 || longitude == 0)  return;
+		if (handler == null) return;
+		
+		UTMRef toXY = new LatLng(latitude, longitude).toUTMRef();
+		
+		String url = String.format(CLOSEST_STOPS_PATH, toXY.getEasting(), toXY.getNorthing());
+		url = String.format("%s%s", BASE_URL, url);
+		
+		httpClient.get(url, new JsonHttpResponseHandler(){
+			@Override
+			public void onSuccess(JSONArray response)
+			{
+				handler.onParsed(JsonParser.ParseClosestStops(response));
+			}
+			
+			@Override
+			public void onFailure(Throwable e)
+			{
+				Log.e("getClosestStopsByCoordinates", "Error retrieveing JSON data");
+				handler.onParsed(null);
 			}
 		});
 	}
