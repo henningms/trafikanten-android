@@ -7,8 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import no.nith.android.trafikanten.model.Departure;
-import no.nith.android.trafikanten.model.Station;
+import no.nith.android.trafikanten.model.*;
 
 public class JsonParser
 {
@@ -65,6 +64,32 @@ public class JsonParser
 			return departureList;
 			
 		} 
+		catch (JSONException e)
+		{
+			return null;
+		}
+	}
+	
+	public static ArrayList<Stop> ParseClosestStops(JSONArray toParse)
+	{
+		try
+		{
+			ArrayList<Stop> stopList = new ArrayList<Stop>();
+			
+			for (int i = 0; i < toParse.length(); i++)
+			{
+				JSONObject obj = toParse.optJSONObject(i);
+				
+				Stop tmpStop = new Stop(
+						obj.getLong("ID"), obj.getString("Name"), obj.getString("Zone"),
+						obj.getLong("X"), obj.getLong("Y"), obj.getInt("WalkingDistance"));
+				
+				stopList.add(tmpStop);
+				
+			}
+			
+			return stopList;
+		}
 		catch (JSONException e)
 		{
 			return null;
