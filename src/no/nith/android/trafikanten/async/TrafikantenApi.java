@@ -104,6 +104,7 @@ public class TrafikantenApi
 		if (latitude == 0 || longitude == 0)  return;
 		if (handler == null) return;
 		
+		// Convert from GPS coordinates (Latitude, Longitude) to UTM (X, Y) coordinates
 		UTMRef toXY = new LatLng(latitude, longitude).toUTMRef();
 		
 		String url = String.format(CLOSEST_STOPS_PATH, toXY.getEasting(), toXY.getNorthing());
