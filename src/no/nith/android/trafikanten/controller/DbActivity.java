@@ -1,7 +1,8 @@
 package no.nith.android.trafikanten.controller;
 
 import no.nith.android.trafikanten.db.DBManager;
-import no.nith.android.trafikanten.db.FavoriteStationsMapper;
+import no.nith.android.trafikanten.model.FavoriteStation;
+import android.util.Log;
 
 public class DbActivity extends BaseActivity {
 
@@ -11,7 +12,14 @@ public class DbActivity extends BaseActivity {
 
 	@Override
 	public void controller() {
-		DBManager db = new DBManager(this, FavoriteStationsMapper.class);
+		DBManager db;
+		try {
+			db = database(FavoriteStation.class);
+			db.open(DBManager.Mode.WRITE);
+			db.close();
+		} catch (Exception e) {
+			Log.e("DBMANAGER", e.getMessage());
+		}
 	}
 
 	@Override

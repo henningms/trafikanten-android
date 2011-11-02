@@ -6,8 +6,5 @@ public class FavoriteStationsMapper extends DBMapper {
 	
 	public static final String TABLE = "favorite_stations";
 	
-	public static final String PRIMARY_KEY = "station_id";
-	
-	public static final String[] columns = {"name"};
 	
 }

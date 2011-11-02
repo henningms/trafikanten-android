@@ -1,6 +1,7 @@
 package no.nith.android.trafikanten.controller;
 
 import no.nith.android.trafikanten.R;
+import no.nith.android.trafikanten.db.DBManager;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,11 +23,26 @@ public abstract class BaseActivity extends Activity {
         
     }
     
+	/**
+	 * Is meant for setting fields for the current activity, such as view
+	 * components, etc.
+	 */
     public abstract void init();
     
+    /**
+     * Is meant for performing the business logic in the current activity.
+     */
     public abstract void controller();
     
+    /**
+     * Is meant for determining what layout to use for the current activity.
+     */
     public abstract void view();
+    
+    
+    public DBManager database(Class<?> entity) throws Exception {
+    	return new DBManager(this, entity);
+    }
     
     /**
      * Sets the layout for the activity, based on the layout ID.
