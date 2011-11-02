@@ -1,24 +1,12 @@
 package no.nith.android.trafikanten.async;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
 import no.mesan.thomasp.location.util.*;
 import no.nith.android.trafikanten.json.JsonParser;
-import no.nith.android.trafikanten.model.Departure;
-import no.nith.android.trafikanten.model.Station;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.text.format.DateFormat;
 import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class TrafikantenApi
