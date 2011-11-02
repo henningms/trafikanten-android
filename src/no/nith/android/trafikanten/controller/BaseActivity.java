@@ -2,6 +2,7 @@ package no.nith.android.trafikanten.controller;
 
 import no.nith.android.trafikanten.R;
 import no.nith.android.trafikanten.db.DBManager;
+import no.nith.android.trafikanten.db.DBManager.Mode;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public abstract class BaseActivity extends Activity {
-
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +21,6 @@ public abstract class BaseActivity extends Activity {
         init();
         controller();
         view();
-        
     }
     
 	/**
@@ -38,11 +38,6 @@ public abstract class BaseActivity extends Activity {
      * Is meant for determining what layout to use for the current activity.
      */
     public abstract void view();
-    
-    
-    public DBManager database(Class<?> entity) throws Exception {
-    	return new DBManager(this, entity);
-    }
     
     /**
      * Sets the layout for the activity, based on the layout ID.
@@ -137,7 +132,6 @@ public abstract class BaseActivity extends Activity {
     	return (TextView) find(textViewName);
     }
 
-    
     /**
      * Finds a ListView component in the layout, based on its ID.
      * @param listViewId The ListView component ID.
@@ -170,5 +164,11 @@ public abstract class BaseActivity extends Activity {
 			e.printStackTrace();
 		}
     	return 0;
+    }
+    
+    /* Database */
+    
+    protected DBManager database(Mode mode) throws Exception {
+    	return new DBManager(this).open(mode);
     }
 }
