@@ -1,8 +1,9 @@
-package no.nith.android.trafikanten.async;
-
-import java.util.ArrayList;
+package no.nith.android.trafikanten.api;
 
 import no.mesan.thomasp.location.util.*;
+import no.nith.android.trafikanten.async.ClosestStopsHandler;
+import no.nith.android.trafikanten.async.DepartureHandler;
+import no.nith.android.trafikanten.async.StationHandler;
 import no.nith.android.trafikanten.http.WebClient;
 import no.nith.android.trafikanten.json.JsonParser;
 import no.nith.android.trafikanten.json.JsonParser2;
@@ -10,12 +11,8 @@ import no.nith.android.trafikanten.model.Departure;
 import no.nith.android.trafikanten.model.Station;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.util.Log;
 
-import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class TrafikantenApi
