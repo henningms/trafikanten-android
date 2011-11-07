@@ -1,9 +1,17 @@
 package no.nith.android.trafikanten.async;
 
+import java.util.ArrayList;
+
 import no.mesan.thomasp.location.util.*;
 import no.nith.android.trafikanten.json.JsonParser;
+import no.nith.android.trafikanten.json.JsonParser2;
+import no.nith.android.trafikanten.model.Departure;
+import no.nith.android.trafikanten.model.Station;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -36,8 +44,8 @@ public class TrafikantenApi
 		httpClient.get(url, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONArray response)
-			{			
-				handler.onParsed(JsonParser.ParseStations(response));
+			{
+				handler.onParsed(JsonParser2.parse(response, Station.class));
 			}
 			
 			@Override
@@ -68,7 +76,7 @@ public class TrafikantenApi
 			@Override
 			public void onSuccess(JSONArray response)
 			{			
-				handler.onParsed(JsonParser.ParseDepartures(response));
+				handler.onParsed(JsonParser2.parse(response, Departure.class));
 			}
 			
 			@Override

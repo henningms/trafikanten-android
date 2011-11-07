@@ -2,11 +2,23 @@ package no.nith.android.trafikanten.model;
 
 import java.util.Date;
 
+import no.nith.android.trafikanten.json.annotation.JsonField;
+
 public class Departure
 {
-	private String lineRef, destinationName;
+	@JsonField("LineRef")
+	private String lineRef;
+	
+	@JsonField("DestinationName")
+	private String destinationName;
+	
+	@JsonField("DeparturePlatformName")
 	private String departurePlatformName;
+	
+	@JsonField("ExpectedDepartureTime")
 	private Date expectedDepartureTime;
+	
+	@JsonField("VehicleMode")
 	private String vehicleMode;
 	
 	private enum Vehicle {

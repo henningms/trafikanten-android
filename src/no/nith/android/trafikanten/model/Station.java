@@ -1,9 +1,22 @@
 package no.nith.android.trafikanten.model;
 
+import java.util.ArrayList;
+
+import no.nith.android.trafikanten.json.annotation.JsonField;
+
 public class Station
 {
+	@JsonField("ID")
 	private long id;
-	private String name, zone;
+	
+	@JsonField("Name")
+	private String name;
+	
+	@JsonField("Zone")
+	private String zone;
+	
+	@JsonField("Stops")
+	private ArrayList<Stop> stops;
 	
 	public Station()
 	{
@@ -34,6 +47,11 @@ public class Station
 	public String getZone()
 	{
 		return zone;
+	}
+	
+	public ArrayList<Stop> getStops()
+	{
+		return stops;
 	}
 	
 	/*

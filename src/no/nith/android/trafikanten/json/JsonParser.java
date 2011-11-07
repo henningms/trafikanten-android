@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import no.mesan.thomasp.location.util.*;
 import no.nith.android.trafikanten.model.*;
 
-public class JsonParser
+public class JsonParser<T>
 {
 	
 	public static ArrayList<Station> ParseStations(JSONArray toParse)
