@@ -3,6 +3,7 @@ package no.nith.android.trafikanten.async;
 import java.util.ArrayList;
 
 import no.mesan.thomasp.location.util.*;
+import no.nith.android.trafikanten.http.WebClient;
 import no.nith.android.trafikanten.json.JsonParser;
 import no.nith.android.trafikanten.json.JsonParser2;
 import no.nith.android.trafikanten.model.Departure;
@@ -25,7 +26,6 @@ public class TrafikantenApi
 	private static final String DEPARTURE_PATH = "/RealTime/GetRealTimeData/%d";
 	private static final String CLOSEST_STOPS_PATH = "/Places/GetClosestStopsByCoordinates/?coordinates=(X=%d,Y=%d)&proposals=7";
 	
-	private static AsyncHttpClient httpClient = new AsyncHttpClient();
 	
 	/**
 	 * 
@@ -34,14 +34,13 @@ public class TrafikantenApi
 	 */
 	public static void findStationsAsync(String search, final StationHandler handler)
 	{
-		if (httpClient == null) return;
 		if (search == null || search == "") return;
 		if (handler == null) return;
 		
 		String url = String.format(STATION_PATH, search);
 		url = String.format("%s%s", BASE_URL, url);	
 		
-		httpClient.get(url, new JsonHttpResponseHandler(){
+		WebClient.getAsync(url, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONArray response)
 			{
@@ -52,7 +51,6 @@ public class TrafikantenApi
 			public void onFailure(Throwable e)
 			{
 				Log.e("findStations", "Error retrieving JSON data");
-				//
 			}
 		});
 	}
@@ -65,14 +63,13 @@ public class TrafikantenApi
 	 */
 	public static void getDeparturesAsync(long stationId, final DepartureHandler handler)
 	{
-		if (httpClient == null) return;
 		if (stationId == 0) return;
 		if (handler == null) return;
 		
 		String url = String.format(DEPARTURE_PATH, stationId);
 		url = String.format("%s%s", BASE_URL, url);	
 		
-		httpClient.get(url, new JsonHttpResponseHandler(){
+		WebClient.getAsync(url, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONArray response)
 			{			
@@ -96,7 +93,6 @@ public class TrafikantenApi
 	 */
 	public static void getClosestStopsByCoordinates(double latitude, double longitude, final ClosestStopsHandler handler)
 	{
-		if (httpClient == null) return;
 		if (latitude == 0 || longitude == 0)  return;
 		if (handler == null) return;
 		
@@ -106,7 +102,7 @@ public class TrafikantenApi
 		String url = String.format(CLOSEST_STOPS_PATH, toXY.getEasting(), toXY.getNorthing());
 		url = String.format("%s%s", BASE_URL, url);
 		
-		httpClient.get(url, new JsonHttpResponseHandler(){
+		WebClient.getAsync(url, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONArray response)
 			{
