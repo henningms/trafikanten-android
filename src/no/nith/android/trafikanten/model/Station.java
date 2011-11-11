@@ -72,4 +72,9 @@ public class Station
 	{
 		this.zone = zone;
 	}
+	
+	public String toString()
+	{
+		return getName();
+	}
 }

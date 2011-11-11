@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import no.nith.android.trafikanten.model.Departure;
 
-public interface DepartureHandler
+public interface DepartureHandler extends BaseHandler
 {
 	public void onParsed(ArrayList<Departure> departures);
 }

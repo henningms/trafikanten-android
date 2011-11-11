@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/station_menu_refresh" android:title="@string/refresh" android:enabled="true" android:visible="true"></item>
+    <item android:id="@+id/station_menu_favorite" android:enabled="true" android:title="@string/add_to_favorite" android:visible="true" android:icon="@drawable/favorite_unselected"></item>
+    <item android:id="@+id/station_menu_moreInfo" android:title="@string/more_info" android:enabled="false"></item>
+
+    
+
+</menu>

@@ -19,8 +19,9 @@ public abstract class BaseActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         init();
-        controller();
         view();
+        controller();
+        
     }
     
 	/**
@@ -170,5 +171,9 @@ public abstract class BaseActivity extends Activity {
     
     protected DBManager database(Mode mode) throws Exception {
     	return new DBManager(this).open(mode);
+    }
+    
+    protected DBManager database(Mode mode, Class<?> entityClass) throws Exception {
+    	return new DBManager(this, entityClass).open(mode);
     }
 }

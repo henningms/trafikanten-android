@@ -1,3 +1,13 @@
+/**
+ * JsonParser2
+ * 
+ * Parses a JSONArray or JSONObject and matches it to a class
+ * 
+ * Uses JsonField annotation
+ * 
+ * Written By Henning M. Stephansen © 2011
+ */
+
 package no.nith.android.trafikanten.json;
 
 import java.lang.annotation.Annotation;
@@ -18,6 +28,13 @@ import android.util.Log;
 
 public class JsonParser2
 {
+	/**
+	 * Parse a JSON array into an ArrayList of the specified Class
+	 * 
+	 * @param array JSONArray object to parse
+	 * @param type Class to parse JSONObjects into
+	 * @return ArrayList of specified type
+	 */
 	public static <T> ArrayList<T> parse(JSONArray array, Class<T> type)
 	{
 		if (array == null) return null;
@@ -32,6 +49,13 @@ public class JsonParser2
 		return list;
 	}
 	
+	/**
+	 * Parses a JSONObject and returns a new instance of specified type
+	 * 
+	 * @param obj JSONOBject to parse
+	 * @param type Class to parse JSONObject into
+	 * @return new instance of class
+	 */
 	public static <T> T parse(JSONObject obj, Class<T> type)
 	{
 		if (obj == null) return null;
@@ -134,16 +158,18 @@ public class JsonParser2
 		}
 		catch(InstantiationException e)
 		{
-			return null;
+			Log.e("JSONParser", e.getMessage() + "\n" + e.getStackTrace());
 		}
 		catch (IllegalAccessException e)
 		{
-			return null;
+			Log.e("JSONParser", e.getMessage() + "\n" + e.getStackTrace());
 		}
 		catch (JSONException e)
 		{
-			return null;
+			Log.e("JSONParser", e.getMessage() + "\n" + e.getStackTrace());
 		}
+		
+		return null;
 	}
 	
 	public static boolean isJsonDate(String value)

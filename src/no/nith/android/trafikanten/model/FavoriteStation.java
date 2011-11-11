@@ -15,6 +15,9 @@ public class FavoriteStation {
 	@VarChar(notNull=true)
 	private String name;
 	
+	@VarChar(notNull=true)
+	private String zone;
+	
 	public FavoriteStation() {
 		
 	}
@@ -22,6 +25,12 @@ public class FavoriteStation {
 	public FavoriteStation(Integer id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+	
+	public FavoriteStation(Integer id, String name, String zone) {
+		this.id = id;
+		this.name = name;
+		this.zone = zone;
 	}
 
 	public Integer getId() {
@@ -38,6 +47,14 @@ public class FavoriteStation {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getZone() {
+		return zone;
+	}
+	
+	public void setZone(String zone) {
+		this.zone = zone;
 	}
 	
 	@Override

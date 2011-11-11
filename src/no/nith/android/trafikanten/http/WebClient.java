@@ -1,3 +1,11 @@
+/**
+ * WebClient
+ * 
+ * Simple webclient that allows for synchronously or asynchronously downloads
+ * 
+ * Written by Henning M. Stephansen © 2011
+ */
+
 package no.nith.android.trafikanten.http;
 
 import java.io.*;

@@ -1,14 +1,18 @@
 package no.nith.android.trafikanten.api;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
+
 import no.mesan.thomasp.location.util.*;
 import no.nith.android.trafikanten.async.ClosestStopsHandler;
 import no.nith.android.trafikanten.async.DepartureHandler;
 import no.nith.android.trafikanten.async.StationHandler;
 import no.nith.android.trafikanten.http.WebClient;
-import no.nith.android.trafikanten.json.JsonParser;
 import no.nith.android.trafikanten.json.JsonParser2;
 import no.nith.android.trafikanten.model.Departure;
 import no.nith.android.trafikanten.model.Station;
+import no.nith.android.trafikanten.model.Stop;
 
 import org.json.JSONArray;
 import android.util.Log;
@@ -21,23 +25,23 @@ public class TrafikantenApi
 	
 	private static final String STATION_PATH = "/Place/FindMatches/%s";
 	private static final String DEPARTURE_PATH = "/RealTime/GetRealTimeData/%d";
-	private static final String CLOSEST_STOPS_PATH = "/Places/GetClosestStopsByCoordinates/?coordinates=(X=%d,Y=%d)&proposals=7";
+	private static final String CLOSEST_STOPS_PATH = "/Place/GetClosestStopsByCoordinates/?coordinates=(X=%d,Y=%d)&proposals=7";
 	
 	
 	/**
 	 * 
 	 * @param search Search string
 	 * @param handler
+	 * @throws URISyntaxException 
 	 */
-	public static void findStationsAsync(String search, final StationHandler handler)
+	public static void findStationsAsync(String search, final StationHandler handler) throws URISyntaxException
 	{
 		if (search == null || search == "") return;
 		if (handler == null) return;
 		
-		String url = String.format(STATION_PATH, search);
-		url = String.format("%s%s", BASE_URL, url);	
+		URI uri = new URI("http", "api-test.trafikanten.no", String.format(STATION_PATH, search), null);
 		
-		WebClient.getAsync(url, new JsonHttpResponseHandler(){
+		WebClient.getAsync(uri.toString(), new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONArray response)
 			{
@@ -47,7 +51,7 @@ public class TrafikantenApi
 			@Override
 			public void onFailure(Throwable e)
 			{
-				Log.e("findStations", "Error retrieving JSON data");
+				handler.onError("Error retrieving stations\n" + e.getMessage());
 			}
 		});
 	}
@@ -76,8 +80,7 @@ public class TrafikantenApi
 			@Override
 			public void onFailure(Throwable e)
 			{
-				Log.e("getDepartures", "Error retrieving JSON data");
-				handler.onParsed(null);
+				handler.onError("Error retrieving departures\n" + e.getMessage());
 			}
 		});
 	}
@@ -96,21 +99,20 @@ public class TrafikantenApi
 		// Convert from GPS coordinates (Latitude, Longitude) to UTM (X, Y) coordinates
 		UTMRef toXY = new LatLng(latitude, longitude).toUTMRef();
 		
-		String url = String.format(CLOSEST_STOPS_PATH, toXY.getEasting(), toXY.getNorthing());
+		String url = String.format(CLOSEST_STOPS_PATH, (int)(toXY.getEasting()), (int)(toXY.getNorthing()));
 		url = String.format("%s%s", BASE_URL, url);
 		
 		WebClient.getAsync(url, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONArray response)
 			{
-				handler.onParsed(JsonParser.ParseClosestStops(response));
+				handler.onParsed(JsonParser2.parse(response, Stop.class));
 			}
 			
 			@Override
 			public void onFailure(Throwable e)
 			{
-				Log.e("getClosestStopsByCoordinates", "Error retrieveing JSON data");
-				handler.onParsed(null);
+				handler.onError("Error retrieving Closest Stops data\n" + e.getMessage());
 			}
 		});
 	}

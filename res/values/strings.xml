@@ -3,5 +3,35 @@
 
     <string name="hello">Hello World, IndexActivity!</string>
     <string name="app_name">Trafikanten</string>
+    <string name="search">Søk</string>
+    <string name="platformName">Avgang fra plattform %s</string>
+    <string name="refresh">Oppdater</string>
+    <string name="add_to_favorite">Legg til i favoritter</string>
+    <string name="remove_from_favorites">Fjern fra favoritter</string>
+    <string name="walkingDistance">Avstand: %d meter</string>
+    <string name="showAllDepartures">Vis alle avganger</string>
+    <string name="minute">min</string>
+    <string name="hour">time</string>
+    <string name="close">Lukk</string>
+    <string name="nextDeparture">Neste avganger</string>
+    <string name="departureInMinutes" formatted="false">%s om %d min</string>
+    <string name="departureInHours" formatted="false">%s om %d timer</string>
+    <string name="departureInSeconds" formatted="false">%s om %d sekunder</string>
+    <string-array name="favorites_context_menu">
+        <item >Fjern fra favoritter</item>
+    </string-array>
+    <string name="error_db_remove_favorite">Klarte ikke å slette %s</string>
+    <string name="favorite_added">%s ble lagt til i favoritter</string>
+    <string name="favorite_removed">%s ble fjernet fra favoritter</string>
+    <string name="error_db_list_favorites">Klarte ikke å hente ut favoritter</string>
+    <string name="error_db_general">Det skjedde en feil ved lesing av databasen</string>
+    <string name="stop_dialog_next_departures">Neste avganger</string>
+    <string name="loading_stations">Laster inn stasjoner...</string>
+    <string name="loading_departures">Laster inn avganger...</string>
+    <string name="more_info">Mer info</string>
+    <string name="no_departures">Ingen avganger herfra</string>
+    <string name="departure_zone">Sone: %s</string>
+    <string name="departure_zone_unknown">Sone: Ukjent</string>
+    <string name="departureNow">%s går nå!</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package no.nith.android.trafikanten.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import no.nith.android.trafikanten.json.annotation.JsonField;
@@ -72,6 +73,14 @@ public class Departure
 	public String getVehicleMode()
 	{
 		return vehicleMode;
+	}
+	
+	public String getHourMinute()
+	{
+		if (getExpectedDepartureTime() == null) return "";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		return sdf.format(getExpectedDepartureTime()).toString();
 	}
 	
 	/*

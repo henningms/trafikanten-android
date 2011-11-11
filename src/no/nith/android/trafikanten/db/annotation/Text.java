@@ -1,3 +1,9 @@
+/**
+ * Text annotation
+ * 
+ * Written by Arild Wanvik Tvergrov © 2011
+ */
+
 package no.nith.android.trafikanten.db.annotation;
 
 import java.lang.annotation.ElementType;

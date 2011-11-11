@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import no.nith.android.trafikanten.model.Station;
 
-public interface StationHandler 
+public interface StationHandler extends BaseHandler
 {
 	public void onParsed(ArrayList<Station> arrayList);
 }

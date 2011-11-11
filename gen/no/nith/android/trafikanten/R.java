@@ -8,25 +8,119 @@
 package no.nith.android.trafikanten;
 
 public final class R {
+    public static final class array {
+        public static final int favorites_context_menu=0x7f060000;
+    }
     public static final class attr {
     }
+    public static final class color {
+        public static final int border_time_background=0x7f040000;
+        public static final int dialog_importang=0x7f040001;
+        public static final int dialog_subtext=0x7f040002;
+    }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int border_time=0x7f020000;
+        public static final int btn_favorite=0x7f020001;
+        public static final int circle=0x7f020002;
+        public static final int favorite_selected=0x7f020003;
+        public static final int favorite_tab_selected=0x7f020004;
+        public static final int favorite_unselected=0x7f020005;
+        public static final int favorites=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
+        public static final int ic_menu_compass_selected=0x7f020008;
+        public static final int ic_menu_compass_unselected=0x7f020009;
+        public static final int ic_menu_star_selected=0x7f02000a;
+        public static final int ic_menu_star_unselected=0x7f02000b;
+        public static final int ic_tab_closeby=0x7f02000c;
+        public static final int ic_tab_departures=0x7f02000d;
+        public static final int ic_tab_favorites=0x7f02000e;
+        public static final int map_selected=0x7f02000f;
+        public static final int map_unselected=0x7f020010;
+        public static final int my_pin=0x7f020011;
+        public static final int tab_departures=0x7f020012;
+        public static final int tab_departures_selected=0x7f020013;
     }
     public static final class id {
-        public static final int myButton=0x7f050001;
-        public static final int test=0x7f050000;
-        public static final int testButton=0x7f050003;
-        public static final int testEditText=0x7f050004;
-        public static final int testListView=0x7f050005;
-        public static final int testTextView=0x7f050002;
+        public static final int RelativeLayout1=0x7f080004;
+        public static final int btnStopDialogClose=0x7f080012;
+        public static final int btnStopDialogShowDepartures=0x7f080011;
+        public static final int lblDepartureLineRef=0x7f08000a;
+        public static final int lblDepartureName=0x7f08000b;
+        public static final int lblDeparturePlatformName=0x7f08000c;
+        public static final int lblDepartureTime=0x7f080009;
+        public static final int lblFavoriteStationName=0x7f080014;
+        public static final int lblFullDepartureStationName=0x7f080005;
+        public static final int lblFullDepartureZone=0x7f080006;
+        public static final int lblName=0x7f080017;
+        public static final int lblStopDialogDepartures=0x7f080010;
+        public static final int lblStopDialogNextDepartures=0x7f08000f;
+        public static final int lblStopDialogWalkingDistance=0x7f08000d;
+        public static final int linearLayout1=0x7f080001;
+        public static final int linearLayout2=0x7f080008;
+        public static final int lstFavorites=0x7f080013;
+        public static final int lstFullDepartureList=0x7f080007;
+        public static final int lstStations=0x7f080003;
+        public static final int mapView=0x7f080000;
+        public static final int myButton=0x7f080016;
+        public static final int progressStopDialogDepartures=0x7f08000e;
+        public static final int station_full_menu_favorite=0x7f08001d;
+        public static final int station_full_menu_refresh=0x7f08001c;
+        public static final int station_menu_favorite=0x7f08001f;
+        public static final int station_menu_moreInfo=0x7f080020;
+        public static final int station_menu_refresh=0x7f08001e;
+        public static final int test=0x7f080015;
+        public static final int testButton=0x7f080019;
+        public static final int testEditText=0x7f08001a;
+        public static final int testListView=0x7f08001b;
+        public static final int testTextView=0x7f080018;
+        public static final int txtSearch=0x7f080002;
     }
     public static final class layout {
-        public static final int main=0x7f030000;
-        public static final int test=0x7f030001;
+        public static final int closeby=0x7f030000;
+        public static final int departures=0x7f030001;
+        public static final int departures_full=0x7f030002;
+        public static final int departures_list_row=0x7f030003;
+        public static final int dialog_stop=0x7f030004;
+        public static final int favorites=0x7f030005;
+        public static final int favorites_list_row=0x7f030006;
+        public static final int main=0x7f030007;
+        public static final int station_autocomplete_row=0x7f030008;
+        public static final int test=0x7f030009;
+        public static final int test_trafikanten=0x7f03000a;
+    }
+    public static final class menu {
+        public static final int station_full_menu=0x7f070000;
+        public static final int station_menu=0x7f070001;
     }
     public static final class string {
-        public static final int app_name=0x7f040001;
-        public static final int hello=0x7f040000;
+        public static final int add_to_favorite=0x7f050005;
+        public static final int app_name=0x7f050001;
+        public static final int close=0x7f05000b;
+        public static final int departureInHours=0x7f05000e;
+        public static final int departureInMinutes=0x7f05000d;
+        public static final int departureInSeconds=0x7f05000f;
+        public static final int departureNow=0x7f05001c;
+        public static final int departure_zone=0x7f05001a;
+        public static final int departure_zone_unknown=0x7f05001b;
+        public static final int error_db_general=0x7f050014;
+        public static final int error_db_list_favorites=0x7f050013;
+        public static final int error_db_remove_favorite=0x7f050010;
+        public static final int favorite_added=0x7f050011;
+        public static final int favorite_removed=0x7f050012;
+        public static final int hello=0x7f050000;
+        public static final int hour=0x7f05000a;
+        public static final int loading_departures=0x7f050017;
+        public static final int loading_stations=0x7f050016;
+        public static final int minute=0x7f050009;
+        public static final int more_info=0x7f050018;
+        public static final int nextDeparture=0x7f05000c;
+        public static final int no_departures=0x7f050019;
+        public static final int platformName=0x7f050003;
+        public static final int refresh=0x7f050004;
+        public static final int remove_from_favorites=0x7f050006;
+        public static final int search=0x7f050002;
+        public static final int showAllDepartures=0x7f050008;
+        public static final int stop_dialog_next_departures=0x7f050015;
+        public static final int walkingDistance=0x7f050007;
     }
 }

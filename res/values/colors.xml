@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="border_time_background">#000596</color>
+    <color name="dialog_importang">#FFF700</color>
+    <color name="dialog_subtext">#ADC7FF</color>
+
+    
+</resources>

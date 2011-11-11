@@ -1,3 +1,12 @@
+/**
+ * DBManager
+ * 
+ * Creates and deletes tables based on classes (models)
+ * 
+ * Can insert, delete and update rows by passing an instance of the class used
+ * 
+ * Written by Arild Wanvik Tvergrov 2011
+ */
 package no.nith.android.trafikanten.db;
 
 import java.lang.annotation.Annotation;
@@ -41,12 +50,16 @@ public class DBManager {
 		WRITE, READ
 	}
 	
-	public DBManager(Context ctx) {
+	public DBManager(Context ctx)  {
 		context = ctx;
 	}
 	
-	public <T> DBManager setEntity(Class<T> entityClass) throws Exception {
-		
+	public DBManager(Context ctx, Class<?> entityClass) throws Exception {
+		context = ctx;
+		setEntity(entityClass);
+	}
+	
+	public <T> DBManager setEntity(Class<T> entityClass) throws Exception {	
 		// Assure that the Entity annotation exists for this class
 		if (!isEntity(entityClass)) {
 			throw new Exception("The class is not an entity!");
@@ -419,7 +432,6 @@ public class DBManager {
 	 * @return The SQL statement.
 	 */
 	private String generateCreateTableQuery() {
-		
 		// Need to determine which columns this entity class has.
 		Field[] fields = entityClass.getDeclaredFields();
 		

@@ -1,3 +1,10 @@
+/**
+ * JsonDate
+ * 
+ * Helper class for converting a date string to a date object
+ * 
+ * Written by Henning M. Stephansen © 2011
+ */
 package no.nith.android.trafikanten.json;
 
 import java.text.SimpleDateFormat;
