@@ -1,4 +1,4 @@
-package no.nith.android.trafikanten.controller.ui.adapter;
+package no.nith.android.trafikanten.util;
 
 import android.location.Location;
 

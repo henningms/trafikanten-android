@@ -6,13 +6,14 @@ import java.util.List;
 import no.nith.android.trafikanten.R;
 import no.nith.android.trafikanten.api.TrafikantenApi;
 import no.nith.android.trafikanten.async.ClosestStopsHandler;
-import no.nith.android.trafikanten.controller.ui.adapter.GeoPointConverter;
 import no.nith.android.trafikanten.controller.ui.map.MarkerOverlay;
 import no.nith.android.trafikanten.controller.ui.map.StationOverlay;
 import no.nith.android.trafikanten.controller.ui.map.StopItemizedOverlay;
 import no.nith.android.trafikanten.controller.ui.map.StopOverlayItem;
 import no.nith.android.trafikanten.model.Stop;
+import no.nith.android.trafikanten.util.GeoPointConverter;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -21,6 +22,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -43,6 +47,7 @@ public class CloseByActivity extends MapActivity
 	private Context context;
 	private LocationManager locationManager;
 	private LocationListener locationListener;
+	private Location lastLocation;
 	
 	@Override
 	protected void onCreate(Bundle savedInstance)
@@ -58,7 +63,7 @@ public class CloseByActivity extends MapActivity
 		
 		mapController = mapView.getController();
 		
-		Drawable drawable = getResources().getDrawable(R.drawable.my_pin);
+		Drawable drawable = getResources().getDrawable(R.drawable.map_pin);
 		stopOverlays = new StopItemizedOverlay(drawable, context);
 		
 		mapView.getOverlays().add(stopOverlays);
@@ -124,7 +129,7 @@ public class CloseByActivity extends MapActivity
 			public void onLocationChanged(Location location) {
 				// Called when a new location is found by the network location
 				// provider.
-				
+				lastLocation = location;
 				mapController.animateTo(GeoPointConverter.convert(location.getLatitude(), location.getLongitude()));
 				mapController.setZoom(17);
 				createStationOverlays(location);
@@ -170,6 +175,41 @@ public class CloseByActivity extends MapActivity
 						
 					}
 				});
+	}
+	
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    menu.clear();
+	    inflater.inflate(no.nith.android.trafikanten.R.menu.closeby_menu, menu);
+	    
+	    return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	    case R.id.closeby_menu_showAsList:
+	    	showAsList();
+	    	return true;
+	    default:
+	        return super.onOptionsItemSelected(item);
+	    }
+	}
+
+	private void showAsList()
+	{
+		if (lastLocation == null) return;
+
+		Intent intent = new Intent().setClass(this, CloseByListActivity.class);
+		
+		intent.putExtra("lat", lastLocation.getLatitude());
+		intent.putExtra("lon", lastLocation.getLongitude());
+		
+		this.startActivity(intent);
+		
 	}
 
 }

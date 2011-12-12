@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class Toaster
 {
-	public static void showToast(Context context, int id)
+	public static void show(Context context, int id)
 	{
 		String message = context.getResources().getString(id);
 		
@@ -20,7 +20,7 @@ public class Toaster
 		toast.show();
 	}
 	
-	public static void showToast(Context context, int id, Object...objects)
+	public static void show(Context context, int id, Object...objects)
 	{
 		String message = String.format(context.getResources().getString(id), objects);
 		
@@ -28,7 +28,7 @@ public class Toaster
 		toast.show();
 	}
 	
-	public static void showToast(Context context, String message)
+	public static void show(Context context, String message)
 	{
 		Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
 		toast.show();

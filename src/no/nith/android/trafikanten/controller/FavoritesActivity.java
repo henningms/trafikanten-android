@@ -47,7 +47,7 @@ public class FavoritesActivity extends BaseActivity
 					long arg3)
 			{
 				
-				Toaster.showToast(context, lstFavorites.getItemAtPosition(arg2).toString());
+				Toaster.show(context, lstFavorites.getItemAtPosition(arg2).toString());
 			}
 		});
 		
@@ -57,7 +57,7 @@ public class FavoritesActivity extends BaseActivity
 			@Override
 			public boolean onLongClick(View v)
 			{
-				Toaster.showToast(context, "Toast");
+				Toaster.show(context, "Toast");
 				return true;
 			}
 		});
@@ -119,7 +119,7 @@ public class FavoritesActivity extends BaseActivity
 			// Example of selecting entities:
 			db.delete(favoriteItem);
 			
-			Toaster.showToast(this, R.string.favorite_removed, favoriteItem.getName());;
+			Toaster.show(this, R.string.favorite_removed, favoriteItem.getName());;
 			
 			// Close the database connection after use.
 			db.close();
@@ -127,7 +127,7 @@ public class FavoritesActivity extends BaseActivity
 			refreshList();
 			
 		} catch (Exception e) {
-			Toaster.showToast(this, R.string.error_db_remove_favorite, favoriteItem.getName());
+			Toaster.show(this, R.string.error_db_remove_favorite, favoriteItem.getName());
 			
 			String output = e.getClass().getName() + " ";
 			for (StackTraceElement se : e.getStackTrace()) {
@@ -164,7 +164,7 @@ public class FavoritesActivity extends BaseActivity
 			db.close();
 			
 		} catch (Exception e) {
-			Toaster.showToast(this, R.string.error_db_list_favorites);
+			Toaster.show(this, R.string.error_db_list_favorites);
 			
 			String output = e.getClass().getName() + " ";
 			for (StackTraceElement se : e.getStackTrace()) {

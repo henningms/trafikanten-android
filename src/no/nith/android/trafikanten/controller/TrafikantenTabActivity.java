@@ -17,20 +17,24 @@ public class TrafikantenTabActivity extends TabActivity
 		TabHost.TabSpec spec;
 		Intent intent;
 		
+		String tab_departures = getResources().getString(R.string.tab_departures);
+		String tab_closeby = getResources().getString(R.string.tab_closeby);
+		String tab_favorites = getResources().getString(R.string.tab_favorites);
+		
 		intent = new Intent().setClass(this, DeparturesActivity.class);
 		
-		spec = host.newTabSpec("departures").setIndicator("Departures",
+		spec = host.newTabSpec("departures").setIndicator(tab_departures,
 				getResources().getDrawable(R.drawable.ic_tab_departures)).setContent(intent);
 		
 		host.addTab(spec);
 		intent = new Intent().setClass(this, CloseByActivity.class);
 		
-		spec = host.newTabSpec("closeby").setIndicator("Close by", 
+		spec = host.newTabSpec("closeby").setIndicator(tab_closeby, 
 				getResources().getDrawable(R.drawable.ic_tab_closeby)).setContent(intent);
 		host.addTab(spec);
 		
 		intent = new Intent().setClass(this, FavoritesActivity.class);
-		spec = host.newTabSpec("favorites").setIndicator("Favorites", 
+		spec = host.newTabSpec("favorites").setIndicator(tab_favorites, 
 				getResources().getDrawable(R.drawable.ic_tab_favorites)).setContent(intent);
 		
 		host.addTab(spec);

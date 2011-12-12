@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/station_full_menu_refresh" android:title="@string/refresh" android:enabled="true" android:visible="true"></item>
-    <item android:id="@+id/station_full_menu_favorite" android:enabled="true" android:title="@string/add_to_favorite" android:visible="true" android:icon="@drawable/btn_favorite"></item>
+    <item android:id="@+id/station_full_menu_refresh" android:title="@string/refresh" android:enabled="false" android:visible="true" android:icon="@drawable/refresh"></item>
+    <item android:id="@+id/station_full_menu_favorite" android:enabled="false" android:title="@string/add_to_favorite" android:visible="true" android:icon="@drawable/btn_favorite"></item>
 
 </menu>

@@ -169,9 +169,15 @@ public class DeparturesActivity extends BaseActivity
 	    
 	    int addRemoveFavorite = getItemFromMenu(menu, R.string.add_to_favorite);
 	    int moreInfo = getItemFromMenu(menu, R.string.more_info);
+	    int refresh = getItemFromMenu(menu, R.string.refresh);
 	    
 	    if (addRemoveFavorite != -1)
 	    {
+	    	if (currentStation != null && currentStation.getName() != null && !currentStation.getName().equals(""))
+	    	{
+	    		menu.getItem(addRemoveFavorite).setEnabled(true);
+	    	}
+	    	
 	    	if (favorited)
 	    	{
 	    		menu.getItem(addRemoveFavorite).setTitle(R.string.remove_from_favorites);
@@ -185,6 +191,15 @@ public class DeparturesActivity extends BaseActivity
 	    		menu.getItem(moreInfo).setEnabled(true);
 	    	}
 	    }
+	    
+	    if (refresh != 1)
+	    {
+	    	if (currentStation != null && currentStation.getName() != null && !currentStation.getName().equals(""))
+	    	{
+	    		menu.getItem(refresh).setEnabled(true);
+	    	}
+	    }
+	    
 	    return true;
 	}
 	
@@ -237,7 +252,7 @@ public class DeparturesActivity extends BaseActivity
 				db.delete(new FavoriteStation((int)currentStation.getId(), currentStation.getName()));
 				setFavorite(false);
 				
-				Toaster.showToast(this, R.string.favorite_removed, 
+				Toaster.show(this, R.string.favorite_removed, 
 						currentStation.getName());
 			}
 			else
@@ -248,7 +263,7 @@ public class DeparturesActivity extends BaseActivity
 				
 				setFavorite(true);
 				
-				Toaster.showToast(this, R.string.favorite_added, currentStation.getName());
+				Toaster.show(this, R.string.favorite_added, currentStation.getName());
 			}
 			
 			// Close the database connection after use.
@@ -258,7 +273,7 @@ public class DeparturesActivity extends BaseActivity
 			
 			String message = getResources().getString(R.string.error_db_general);
 			
-			Toaster.showToast(this, message);
+			Toaster.show(this, message);
 			
 			String output = e.getClass().getName() + " ";
 			for (StackTraceElement se : e.getStackTrace()) {
@@ -299,7 +314,7 @@ public class DeparturesActivity extends BaseActivity
 			{
 				progress.cancel();
 				
-				Toaster.showToast(context, message);
+				Toaster.show(context, message);
 				
 			}
 		});
@@ -333,7 +348,7 @@ public class DeparturesActivity extends BaseActivity
 			
 		} catch (Exception e) {
 			
-			Toaster.showToast(this, R.string.error_db_general);
+			Toaster.show(this, R.string.error_db_general);
 			
 			String output = e.getClass().getName() + " ";
 			for (StackTraceElement se : e.getStackTrace()) {

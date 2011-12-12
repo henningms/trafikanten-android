@@ -33,5 +33,12 @@
     <string name="departure_zone">Sone: %s</string>
     <string name="departure_zone_unknown">Sone: Ukjent</string>
     <string name="departureNow">%s går nå!</string>
+    <string name="tab_departures">Avganger</string>
+    <string name="tab_closeby">I nærheten</string>
+    <string name="tab_favorites">Favoritter</string>
+    <string name="show_as_list">Vis som liste</string>
+    <string name="stations_closeby">Holdeplasser i nærheten</string>
+    <string name="walkingDistanceShort">%dm</string>
+    <string name="loading_closest_stops">Laster inn holdeplasser i nærheten</string>
 
 </resources>

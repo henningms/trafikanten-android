@@ -77,4 +77,15 @@ public class Station
 	{
 		return getName();
 	}
+	
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof Station)) {
+			return false;
+		}
+		Station s = (Station) o;
+		return getId() == s.getId();
+	}
 }

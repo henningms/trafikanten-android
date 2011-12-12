@@ -77,7 +77,7 @@ public class DeparturesFullActivity extends BaseActivity
 			{
 				progress.cancel();
 				
-				Toaster.showToast(context, message);
+				Toaster.show(context, message);
 				
 			}
 		});
@@ -110,6 +110,7 @@ public class DeparturesFullActivity extends BaseActivity
 	    		menu.getItem(addRemoveFavorite).setTitle(R.string.remove_from_favorites);
 	    	}
 	    }
+	   
 	   
 	    return true;
 	}
@@ -144,7 +145,7 @@ public class DeparturesFullActivity extends BaseActivity
 				db.delete(new FavoriteStation((int)id, name, zone));
 				setFavorite(false);
 				
-				Toaster.showToast(this, R.string.favorite_removed, 
+				Toaster.show(this, R.string.favorite_removed, 
 						name);
 			}
 			else
@@ -155,7 +156,7 @@ public class DeparturesFullActivity extends BaseActivity
 				
 				setFavorite(true);
 				
-				Toaster.showToast(this, R.string.favorite_added, name);
+				Toaster.show(this, R.string.favorite_added, name);
 			}
 			
 			// Close the database connection after use.
@@ -165,7 +166,7 @@ public class DeparturesFullActivity extends BaseActivity
 			
 			String message = getResources().getString(R.string.error_db_general);
 			
-			Toaster.showToast(this, message);
+			Toaster.show(this, message);
 			
 			String output = e.getClass().getName() + " ";
 			for (StackTraceElement se : e.getStackTrace()) {
@@ -206,7 +207,7 @@ public class DeparturesFullActivity extends BaseActivity
 			{
 				progress.cancel();
 				
-				Toaster.showToast(context, message);
+				Toaster.show(context, message);
 				
 			}
 		});
@@ -239,7 +240,7 @@ public class DeparturesFullActivity extends BaseActivity
 			
 		} catch (Exception e) {
 			
-			Toaster.showToast(this, R.string.error_db_general);
+			Toaster.show(this, R.string.error_db_general);
 			
 			String output = e.getClass().getName() + " ";
 			for (StackTraceElement se : e.getStackTrace()) {
